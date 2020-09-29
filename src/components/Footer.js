@@ -1,11 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
-
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -41,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = () => {
+const Footer = () => {
   const classes = useStyles();
 
   return (
@@ -49,17 +47,15 @@ const Header = () => {
  <AppBar position="static" color="primary" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            Our Store
+            &copy; Steve Baldock Enterprises
           </Typography>
-          {/* These get pushed to the right, becuase the classes.toolbarTitle sets flexGrow to 1... */}
-  
-          <Button href="#" color="default" variant="outlined" className={classes.link}>
-            Cart
-          </Button>
+          <Link variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+            GitHub
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
   )
 }
 
-export default Header;
+export default Footer;
