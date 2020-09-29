@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import toggleCategory from '../../store/products';
+import { toggleCategory } from '../../store/products';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -46,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Products = (props) => {
+function Products(props) {
+
   const classes = useStyles();
 
   return (
@@ -62,7 +64,7 @@ const Products = (props) => {
             />
             <CardContent>
               <Typography variant="h5" color="textPrimary">
-                {props.products.displayedProducts}
+                {props.displayedProducts}
               </Typography>
             </CardContent>
             <CardActions>
@@ -79,7 +81,7 @@ const Products = (props) => {
             />
             <CardContent>
               <Typography variant="h5" color="textPrimary">
-                {props.products.displayProducts}
+              {props.displayedProducts}
               </Typography>
             </CardContent>
             <CardActions>
@@ -97,7 +99,7 @@ const Products = (props) => {
             />
             <CardContent>
               <Typography variant="h5" color="textPrimary">
-                {props.products.item}
+              {props.displayedProducts}
               </Typography>
             </CardContent>
             <CardActions>
