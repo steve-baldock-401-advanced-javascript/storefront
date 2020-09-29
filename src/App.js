@@ -1,13 +1,21 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-import Header from './components/header';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import CurrentCategory from './components/storefront/currentCategory';
+import Products from './components/storefront/products';
+import Categories from './components/storefront/categories';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
     <>
-    <Header />
-    </>
+      <CssBaseline />
+      <Header />
+      <Categories />
+      <CurrentCategory /> 
+      <Products /> 
+      <Footer />
+    </> 
   );
 }
 

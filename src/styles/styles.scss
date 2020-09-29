@@ -1,0 +1,20 @@
+.footer{
+  background-color: rgb(44, 43, 43);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+    a{
+      color: white;
+      margin-left: 2em;
+      text-decoration: none;
+    }
+ 
+    p:hover{
+      color: maroon;
+    }
+
+
+}
+
+ 
