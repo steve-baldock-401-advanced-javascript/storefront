@@ -2,33 +2,35 @@
 // this is a state management container for all products
 
 const initialState = {
+  // products: [
+  //   { category: 'Turntables', item: 'Turntable', price: '$300'},
+  //   { category: 'Speakers', item: 'Speakers', price: '$800'},
+  //   { category: 'Amplifiers',  item: 'Amplifier', price: '$450'},
+  //   { category: 'Headphones', item: 'Headphone', price: '$600'}
+  // ], 
   categories: [
-    { name: 'vinyl', description: 'vinyl supplies' },
-    { name: 'audio', description: 'emit sound'},
-    { name: 'handling', description: 'connect devices'},
-    { name: 'power', description: 'control sound quality'}
+    { name: 'Turntables', description: 'vinyl supplies' },
+    { name: 'Speakers', description: 'emit sound'},
+    { name: 'Amplifiers', description: 'control sound quality'},
+    { name: 'Headphones', description: 'personal sound '}
   ], 
-}
+    activeCategory: ['Turntables'],
+};     
 
 // define reducer
 export default (state = initialState, action) => {
-
-  const { type, payload } = action;
-  switch(type){
-    case 'Change':
-      let categories = state.categories.filter(category => {
-        return category.name === payload;
-      })
-      return {...state, categories }
-      default:
-        return state;
+  let { type, payload } = action;
+  switch (type) {
+    case 'CHANGE':
+      return {...state, activeCategory: payload};
+    default:
+      return state;
   }
+};
 
-}
-
-export const toggleCategory = (item) => {
+export const changeCategory = (name) => {
   return {
-    type: 'Change',
-    payload: item
+    type: 'CHANGE',
+    payload: name
   }
 }
