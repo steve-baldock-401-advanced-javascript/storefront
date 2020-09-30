@@ -16,3 +16,20 @@ import { createStore, combineReducers, applyMiddleware} from 'redux';
 let reducers = combineReducers({ reducerA, reducerB });
 const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
+
+
+  // To Do List - Wednesday
+
+  // Monday
+  // Render Products on screen
+
+  // Tuesday
+  // Build Cart and ability to place products in cart
+  // Ability to view items in cart by clicking cart
+  // Add counter to cart
+  // Add delete function to cart to change the items and count
+
+  // Wednesday
+  // Connect store to api for persistence
+  // Add live inventory
+  // When item is moved to cart, it is removed from inventory so that no others can purchase it

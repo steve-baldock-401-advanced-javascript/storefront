@@ -48,9 +48,9 @@ const Categories = (props) => {
       {console.log(props)}
       <Typography variant="h5">Browse our Categories</Typography>
       <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-        {props.categories.categories.map(cat =>
+        {props.categories.categories.map((cat, i) =>
           <Button
-            key={cat._id}
+            key={ i }
             color="primary"
             onClick={() => props.changeCategory(cat.name)}
           >
