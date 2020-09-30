@@ -4,11 +4,12 @@
 const initialState = {
   products: [
     { category: 'Turntables', item: 'Technics', price: '$300'},
+    { category: 'Turntables', item: 'Denon', price: '$300'},
     { category: 'Speakers', item: 'Speakers', price: '$800'},
     { category: 'Amplifiers',  item: 'Amplifier', price: '$450'},
     { category: 'Headphones', item: 'Headphone', price: '$600'}
   ], 
-  activeProduct: ['Technics'],
+  activeProduct: 'Technics',
 };     
 
 // define reducer

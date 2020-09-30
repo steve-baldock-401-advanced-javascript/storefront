@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { addToCart } from '../../store/cart';
 
+
 import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,41 +52,49 @@ function Products(props) {
 
   const classes = useStyles();
 
+  const items = props.products.map((item, i) => {
+    if(props.activeCategory === item.category){
+      return (
+        <Card key={i} className={classes.card}>
+          <CardMedia 
+            className={classes.cardMedia}
+        />
+      <CardContent className={classes.cardContent}>
+        <Typography variant="h5" color="textPrimary">
+          {item.item}
+        </Typography>
+        <Typography variant="p" color="textSecondary">
+          {item.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button color="default" variant="outlined">Add To Cart</Button>
+        <Button color="default" variant="outlined">View Details</Button>
+      </CardActions>
+      </Card>);
+    } else {
+      return null;
+    }
+  })
+
+
   return (
     <Container className={classes.cardGrid} maxWidth="md" component="main">
       <Grid container spacing={5}>
-        <Card className={classes.card}>
-          <CardMedia 
-            className={classes.cardMedia}
-            image={`https://source.unsplash.com/random?${props.activeProduct}`}
-          />
-        <CardContent className={classes.cardContent}>
-          <Typography variant="h5" color="textPrimary">
-            {/* {props.products} */}
-          </Typography>
-          <Typography variant="p" color="textSecondary">
-            {props.products.products}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button variant="outline" color="primary">Add To Cart</Button>
-          <Button variant="outline" color="primary">View Details</Button>
-        </CardActions>
-        </Card>
+        {items}
       </Grid>
     </Container> 
   );
 };
 
   const mapStateToProps = state => {
-    console.log(state)
+    // console.log(state.products)
     return {
-      activeProduct: state.products.activeProduct,
-      products: state.products.products
+      products: state.products.products,
+      activeCategory: state.categories.activeCategory
     }
   }
 
   const mapDispatchToProps = { addToCart }
-
 
 export default connect(mapStateToProps, mapDispatchToProps )(Products);
