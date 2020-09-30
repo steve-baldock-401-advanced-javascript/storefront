@@ -62,14 +62,16 @@ const Categories = (props) => {
   );
 };
 
+// categories is whatever I want to call it, state.categories is the name of the reducer
 const mapStateToProps = state => {
   return {
     categories: state.categories,
-    changeCategory: changeCategory,
   }
 }
 
   const mapDispatchToProps = { changeCategory }
+
+  
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
