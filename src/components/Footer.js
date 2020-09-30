@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import '../styles/styles.scss';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -16,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
+
+
+
   toolbarTitle: {
     flex: 1,
   },

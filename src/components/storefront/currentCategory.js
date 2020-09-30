@@ -3,7 +3,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
-import toggleCategory from '../../store/products';
+import changeCategory from '../../store/categories';
+import { When } from 'react-if';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -43,26 +44,28 @@ const CurrentCategory = (props) => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="sm" component="main" className={classes.heroContent}>
-    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-      {props.activeCategory}
-      {props.activeCategoryDescription}
-    </Typography>
-    <Typography variant="h5" align="center" color="textSecondary" component="p">
-      Electronics
-    </Typography>
-  </Container>
-
-  )
-};
+    <When condition={!!props.activeCategory}>
+      <div className={classes.heroContent}>
+        <Container maxWidth="sm">
+          <Typography component="h1" variant="h2" className={classes.categoryName} align="center" color="textPrimary" gutterBottom>
+            {props.activeCategory}
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            {props.categories.name} 
+        </Typography>
+        </Container>
+      </div>
+    </When>
+  );
+}
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories
+    categories: state.categories,
+    activeCategory: state.categories.activeCategory,
   }
 }
 
-const mapDispatchToProps = { toggleCategory }
-
+const mapDispatchToProps = { changeCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentCategory);

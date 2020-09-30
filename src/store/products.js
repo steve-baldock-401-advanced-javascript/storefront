@@ -3,39 +3,26 @@
 
 const initialState = {
   products: [
-    { category: 'vinyl', item: 'Turntable', price: '$300'},
-    { category: 'sound', item: 'Speakers', price: '$800'},
-    { category: 'handling', item: 'Receiver', price: '$500'},
-    { category: 'power',  item: 'Amplifier', price: '$450'}
+    { category: 'Turntables', item: 'Turntable', price: '$300'},
+    { category: 'Speakers', item: 'Speakers', price: '$800'},
+    { category: 'Amplifiers',  item: 'Amplifier', price: '$450'},
+    { category: 'Headphones', item: 'Headphone', price: '$600'}
   ], 
-  displayedProducts : []
-  // categories: [
-  //   { vinyl: 'vinyl', description: 'vinyl supplies' },
-  //   { sound: 'audio', description: 'emit sound'},
-  //   { handling: 'handling', description: 'connect devices'},
-  //   { power: 'power', description: 'control sound quality'}
-  // ], 
-}
+  activeProduct: [],
+  
+};     
 
 // define reducer
 export default (state = initialState, action) => {
-
-  const { type, payload } = action;
-  switch(type){
-    case 'Change':
-      let displayedProducts = state.products.filter(product => {
-        return product.category === payload;
-      })
-      return {...state, displayedProducts }
-      default:
-        return state;
+  let { type, payload } = action;
+  switch (type) {
+    case 'PRODUCT':
+      return {...state, activeProduct: payload};
+    default:
+      return state;
   }
+};
 
-}
 
-export const toggleCategory = (item) => {
-  return {
-    type: 'Change',
-    payload: item
-  }
-}
+
+

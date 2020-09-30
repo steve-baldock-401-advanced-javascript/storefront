@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { toggleCategory } from '../../store/products';
+import { addToCart } from '../../store/cart';
+
+import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -52,75 +52,40 @@ function Products(props) {
   const classes = useStyles();
 
   return (
-    <Container>
-      <Grid container spacing={5} alignItems="stretch">
-        {/* why 3 specs here? on a small screen, use 12 grid spots, 6 on a small screen, 4 on medium+ */}
-        {/* In other words, 1 accross, 2 accross, or 3 accross */}
-        <Grid item xs={12} sm={6} md={4}>
-          <Card>
-            <CardHeader title="McIntosh Amplifier"
-              titleTypographyProps={{ align: 'center' }}
-              className={classes.cardHeader}
-            />
-            <CardContent>
-              <Typography variant="h5" color="textPrimary">
-                {props.displayedProducts}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button variant='outlined' color="primary">Click Me</Button>
-            </CardActions>
-          </Card>
-          
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card>
-            <CardHeader title="Technics Turntable"
-              titleTypographyProps={{ align: 'center' }}
-              className={classes.cardHeader}
-            />
-            <CardContent>
-              <Typography variant="h5" color="textPrimary">
-              {props.displayedProducts}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button variant='outlined' color="primary">Click Me</Button>
-            </CardActions>
-          </Card>
-        </Grid>
-  
-        <Grid item xs={12} sm={6} md={4}>
-  
-          <Card>
-            <CardHeader title="Grado Labs Headphones"
-              titleTypographyProps={{ align: 'center' }}
-              className={classes.cardHeader}
-            />
-            <CardContent>
-              <Typography variant="h5" color="textPrimary">
-              {props.displayedProducts}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button variant='outlined' color="primary">Click Me</Button>
-            </CardActions>
-          </Card>
-        </Grid>
+    <Container className={classes.cardGrid} maxWidth="md" component="main">
+      <Grid container spacing={5}>
+        <Card className={classes.card}>
+          <CardMedia 
+            className={classes.cardMedia}
+            image={`https://source.unsplash.com/random?${props.activeProduct}`}
+          />
+        <CardContent className={classes.cardContent}>
+          <Typography variant="h5" color="textPrimary">
+            {/* {props.products} */}
+          </Typography>
+          <Typography variant="p" color="textSecondary">
+            {props.products.products}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button variant="outline" color="primary">Add To Cart</Button>
+          <Button variant="outline" color="primary">View Details</Button>
+        </CardActions>
+        </Card>
       </Grid>
-      </Container>
-      
+    </Container> 
   );
 };
 
-
   const mapStateToProps = state => {
+    console.log(state)
     return {
-      products: state.products
+      activeProduct: state.products.activeProduct,
+      products: state.products.products
     }
   }
 
-  const mapDispatchToProps = { toggleCategory }
+  const mapDispatchToProps = { addToCart }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps )(Products);
