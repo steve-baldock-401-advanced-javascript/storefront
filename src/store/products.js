@@ -3,17 +3,16 @@
 
 const initialState = {
   products: [
-    { category: 'Turntables', item: 'Turntable', price: '$300'},
+    { category: 'Turntables', item: 'Technics', price: '$300'},
     { category: 'Speakers', item: 'Speakers', price: '$800'},
     { category: 'Amplifiers',  item: 'Amplifier', price: '$450'},
     { category: 'Headphones', item: 'Headphone', price: '$600'}
   ], 
-  activeProduct: [],
-  
+  activeProduct: ['Technics'],
 };     
 
 // define reducer
-export default (state = initialState, action) => {
+export const products = (state = initialState, action) => {
   let { type, payload } = action;
   switch (type) {
     case 'PRODUCT':
