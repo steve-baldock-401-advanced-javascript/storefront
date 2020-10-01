@@ -5,32 +5,37 @@ let initialState = {
 
 export default (state=initialState, action) => {
   const { type, payload } = action;
-
   // eslint-disable-next-line default-case
   switch(type) {
     case 'ADDTOCART':
-      let totalCartItems = state.cartItems + 1;
+      let newCart = [...state.cartItems, payload];
+      let newPrice = state.totalPrice + payload.price;
 
-      return totalCartItems;
+      return {cartItems: newCart, totalPrice: newPrice };
 
-    case 'RESET':
-      return initialState;
-    
+    case 'REMOVE':
+      let updatedCart = state.cartItems.filter(item => {
+        if(item.item !== payload.item){
+          return item;
+        }
+      })
+      let updatedPrice = state.totalPrice - payload.price;
+      return {cartItems: updatedCart, totalPrice: updatedPrice };
     default:
       return state;
   }
 }
 
-export  const addToCart = product => {
+export const addToCart = product => {
   return {
     type: 'ADDTOCART',
     payload: product,
   }
 }
 
-export  const emptyCart = product => {
+export const updateCart = product => {
   return {
-    type: 'RESET',
+    type: 'REMOVE',
     payload: product,
   }
 }

@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import SimpleCart from './storefront/cart';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -50,11 +51,7 @@ const Header = () => {
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
             Our Store
           </Typography>
-          {/* These get pushed to the right, becuase the classes.toolbarTitle sets flexGrow to 1... */}
-  
-          <Button href="#" color="default" variant="outlined" className={classes.link}>
-            Cart
-          </Button>
+          < SimpleCart />
         </Toolbar>
       </AppBar>
     </div>

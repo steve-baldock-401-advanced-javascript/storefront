@@ -6,7 +6,7 @@ import Products from './components/storefront/products';
 import Categories from './components/storefront/categories';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './styles/styles.scss';
-// import SimpleCart from './components/storefront/cart';
+import SimpleCart from './components/storefront/cart';
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
       <CurrentCategory /> 
       <Products /> 
       </main>
-      {/* <SimpleCart /> */}
+      <SimpleCart />
       <Footer />
     </> 
   );
