@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { updateCart } from '../../store/cart';
+import { updateCart } from '../../store/cart'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -18,6 +18,12 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  card: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'space-around'
+  }
 }));
 
 const SimpleCart = (props) => {
@@ -34,7 +40,7 @@ const SimpleCart = (props) => {
 
   const body = props.cartItems.map((item, i) => 
       <Card key={i}>
-        <CardContent>
+        <CardContent className={classes.card}>
           <Typography>
             {`${item.item}: $${item.price}`}
           </Typography>
