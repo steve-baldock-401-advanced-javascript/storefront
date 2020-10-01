@@ -18,15 +18,10 @@ const store = () => {
   return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 
-  // To Do List - Wednesday
 
-  // Monday
-  // Render Products on screen
-
-  // Tuesday
-  // Build Cart and ability to place products in cart
+  
   // Ability to view items in cart by clicking cart
-  // Add counter to cart
+
   // Add delete function to cart to change the items and count
 
   // Wednesday

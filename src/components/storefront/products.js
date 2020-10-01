@@ -9,9 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { addToCart } from '../../store/cart';
-
-
 import CardMedia from '@material-ui/core/CardMedia';
+
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -36,6 +35,12 @@ const useStyles = makeStyles((theme) => ({
   cardHeader: {
     backgroundColor: theme.palette.grey[200]
   },
+  cardContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   fullHeight: {
     height: "100%"
   },
@@ -47,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function Products(props) {
 
   const classes = useStyles();
@@ -57,21 +61,21 @@ function Products(props) {
       return (
         <Card key={i} className={classes.card}>
           <CardMedia 
-            className={classes.cardMedia}
-        />
-      <CardContent className={classes.cardContent}>
-        <Typography variant="h5" color="textPrimary">
-          {item.item}
-        </Typography>
-        <Typography variant="p" color="textSecondary">
-          {item.price}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button color="default" variant="outlined">Add To Cart</Button>
-        <Button color="default" variant="outlined">View Details</Button>
-      </CardActions>
-      </Card>);
+            className={classes.cardMedia}/>
+          <CardContent
+            className={classes.cardContent}>
+            <Typography variant="h5" color="textPrimary">
+            {item.item}
+            </Typography>
+            <Typography variant="p" color="textSecondary">
+            ${item.price}
+          </Typography>
+          </CardContent>
+          <CardActions>
+            <Button color="default" variant="outlined"onClick={() => props.addToCart(item) }>Add To Cart</Button>
+            <Button color="default" variant="outlined">View Details</Button>
+          </CardActions>
+        </Card>);
     } else {
       return null;
     }
