@@ -1,7 +1,14 @@
 main {
-  min-height: 90vh;
+  min-height: 55vh;
 }
 
 
-
+#footer{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: gray;
+}
  
